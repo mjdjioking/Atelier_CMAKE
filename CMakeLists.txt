@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.5)
-project(calculator C)
-add_subdirectory(include)
-add_subdirectory(src)
-include_directories(include)
+# On active les fonctionnalités de test
 enable_testing()
-add_test(t1 src/calculator add 2 3)
-add_test(t2 src/calculator sub 3 -2)
-add_test(t3 src/calculator mul 5 5)
-add_test(t4 src/calculator div 1 5)
+
+# On définit le test nommé "TestCarre"
+# COMMAND définit l'exécutable à lancer et ses arguments
+add_test(NAME TestCarre COMMAND calculator car 5)
+
+# On définit le résultat attendu (Expression régulière)
+# Puisque vous utilisez %lf dans le printf, le résultat sera 25.000000
+set_tests_properties(TestCarre PROPERTIES PASS_REGULAR_EXPRESSION "25\\.0+")
